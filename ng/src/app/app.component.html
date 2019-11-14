@@ -1,0 +1,12 @@
+<masthead class="masthead" *ngIf="!loading"></masthead>
+<main>
+  <router-outlet></router-outlet>
+  <div class="app-loader" *ngIf="loading"></div>
+</main>
+<footer *ngIf="!loading">
+  <div class="container">
+    <p class="side-push">
+      &copy; {{ siteName }}
+    </p>
+  </div>
+</footer>

@@ -1,0 +1,14 @@
+{
+    "/pw/api/*": {
+        "target": "https://baksaimre.hu",
+        "secure": true,
+        "changeOrigin": true,
+        "logLevel": "info"
+    },
+    "/pw/site/assets/*": {
+        "target": "https://baksaimre.hu",
+        "secure": true,
+        "changeOrigin": true,
+        "logLevel": "info"
+    }
+}

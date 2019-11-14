@@ -1,0 +1,5 @@
+<ul>
+  <li *ngFor="let year of years" [class.active]="year === currentYear">
+    <span (click)="filterByYear(year)">{{ year }}</span>
+  </li>
+</ul>

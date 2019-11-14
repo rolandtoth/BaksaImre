@@ -1,0 +1,14 @@
+{
+    "/pw/api/*": {
+        "target": "http://baksa.test",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "info"
+    },
+    "/pw/site/assets/*": {
+        "target": "http://baksa.test",
+        "secure": false,
+        "changeOrigin": true,
+        "logLevel": "info"
+    }
+}

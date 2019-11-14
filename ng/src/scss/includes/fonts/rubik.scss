@@ -1,0 +1,21 @@
+/* rubik-300 - latin-ext_latin */
+@font-face {
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local('Rubik Light'), local('Rubik-Light'),
+    url('/assets/fonts/rubik/rubik-300.woff2') format('woff2'),
+    url('/assets/fonts/rubik/rubik-300.woff') format('woff');
+}
+
+/* rubik-400 - latin-ext_latin */
+@font-face {
+  font-family: 'Rubik';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Rubik Regular'), local('Rubik-Regular'),
+    url('/assets/fonts/rubik/rubik-400.woff2') format('woff2'),
+    url('/assets/fonts/rubik/rubik-400.woff') format('woff');
+}

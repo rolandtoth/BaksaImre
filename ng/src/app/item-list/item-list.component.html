@@ -1,0 +1,14 @@
+<div *ngFor="let item of visibleItems" class="item">
+
+  <a class="item__thumblink img-hover-effect" [routerLink]="['/' + (item.template | itemType:true), item.name]">
+    <app-picture *ngIf="item.featured_image as img" [img]="img.variants.md" [alt]="img.description"></app-picture>
+  </a>
+
+  <h3 class="item__title">
+    <a [routerLink]="['/' + item.template, item.name]">{{ item.title }}</a>
+  </h3>
+
+  <item-meta [item]="item"></item-meta>
+
+  <p class="item__intro" [innerHTML]="item.intro | excerpt:120"></p>
+</div>

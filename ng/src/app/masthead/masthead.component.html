@@ -1,0 +1,26 @@
+<header>
+  <div class="container">
+    <div class="branding">
+      <h2>
+        <a [routerLink]="['/']" (click)="resetFilters()">
+          <img src="/assets/images/baksa-imre.png" alt="{{ siteName }}" width="64" height="64">
+          <span class="title">{{ siteName }}</span>
+        </a>
+      </h2>
+      <em class="slogan">{{ slogan }}</em>
+    </div>
+    <div class="navs">
+      <nav class="filters">
+        <span class="type-filter" *ngFor="let navItem of nav" [class.active]="currentFilter === navItem.type" (click)="setFilterBy(navItem.type)">{{ navItem.name }}</span>
+      </nav>
+      <nav class="contacts">
+        <a [routerLink]="['oneletrajz']" (click)="resetFilters()" routerLinkActive="active" class="biography" title="Önéletrajz">
+          <svg [outerHTML]="'user' | inlineSvg"></svg>
+        </a>
+        <a [routerLink]="['kapcsolat']" (click)="resetFilters()" routerLinkActive="active" class="contact" title="Kapcsolat">
+          <svg [outerHTML]="'mail' | inlineSvg"></svg>
+        </a>
+      </nav>
+    </div>
+  </div>
+</header>

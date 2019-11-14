@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="side-push">
+    <h1>{{ title }}</h1>
+
+    <h2>{{ settings.siteName }}</h2>
+
+    <p class="subtitle">
+      {{ settings.jobTitle }}
+    </p>
+
+    <div class="contact-details">
+      <p>
+        <svg [outerHTML]="'phone' | inlineSvg"></svg> {{ settings.phone }}
+      </p>
+
+      <p>
+        <svg [outerHTML]="'mail' | inlineSvg"></svg>{{ settings.email }}
+      </p>
+    </div>
+  </div>
+</div>

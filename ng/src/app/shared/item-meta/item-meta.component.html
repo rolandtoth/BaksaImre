@@ -1,0 +1,6 @@
+<p class="item-meta">
+  <span>{{ item.template === 'play' ? (item.role === 'director' ? 'rendezés' : '') :  (item.template | itemType) }}</span>
+  <span *ngIf="item.template === 'play' && item.role === 'actor' && !item.figure">szereplő</span>
+  <span *ngIf="item.figure"><span *ngIf="item.role === 'director'"> &middot; </span>{{ item.figure }} szerepében</span>
+  <span> &middot; {{ item.year }}</span>
+</p>
