@@ -10,14 +10,18 @@ if ($page->template->name !== 'api') {
 	
 header("Content-type: application/json");
 
+require_once(__DIR__ . '/SiteMap.php');
+
 if (wire('input')->urlSegment1 === 'items') {
-	$apiData = wire('cache')->get('apiData', '+300 seconds', function () {
+	$apiData = wire('cache')->get('apiData', '+5 minutes', function () {
 		$items = wire('pages')->find('template=play|critic|interview, limit=999, sort=-date');
+		$itemsArray = array_map('\ProcessWire\getItemData', $items->getArray());
 
 		saveMeta($items);
+		saveSiteMap($itemsArray);
 
 		return [
-			'items' => array_map('\ProcessWire\getItemData', $items->getArray()),
+			'items' => $itemsArray,
 			'theaters' => wire('pages')->find('template=theater')->explode(['id', 'title', 'link'])
 		];
 	});
@@ -26,6 +30,11 @@ if (wire('input')->urlSegment1 === 'items') {
 }
 
 exit;
+
+function saveSiteMap($items) {
+	$sitemap = new \SiteMap($items);
+	$sitemap->saveXML(__DIR__ . '/../../sitemap.xml');
+}
 
 function saveMeta($items) {
 	$data = [];

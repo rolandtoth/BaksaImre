@@ -524,8 +524,12 @@ h3 {
         margin-top: 0.2rem;
       }
 
-      &:hover .title {
-        color: $plum;
+      @media($desktop) {
+        &:hover {
+          .title {
+            color: $plum;
+          }
+        }
       }
     }
   }

@@ -10,7 +10,7 @@ import {Item} from '../shared/interfaces/item.interface'
 export class ItemsComponent implements OnInit {
   message: string
   items: Item[]
-  filterBy: string = ItemType.All
+  filterBy: ItemType = ItemType.All
   filterByYear?: number
 
   constructor(private route: ActivatedRoute, private data: DataService) {}

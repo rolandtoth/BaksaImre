@@ -20,8 +20,7 @@
       <h2>Képek</h2>
       <div class="lightbox">
         <a *ngFor="let img of item.images | keyvalue" href="{{ img.value.variants.lg.url }}" target="_blank" class="img-hover-effect">
-          <img class="item-details__img" src="{{ img.value.variants.sm.url }}" width="{{ img.value.variants.sm.width }}" height="{{ img.value.variants.sm.height }}"
-            alt="{{ img.value.description }}" />
+          <img class="item-details__img" src="{{ img.value.variants.sm.url }}" [width]="img.value.variants.sm.width" [height]="img.value.variants.sm.height" alt="{{ img.value.description }}" />
         </a>
       </div>
       <p class="m-0" *ngIf="item.photographer">Fotó: {{ item.photographer.join(', ') }}</p>
