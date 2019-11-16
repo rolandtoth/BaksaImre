@@ -1,5 +1,5 @@
 <div class="container clearfix">
-  <a href="" routerLink="/" class="back">
+  <a href="" routerlink="/" class="back">
     <svg-icon [name]="'chevron-left'"></svg-icon>
   </a>
 
@@ -9,59 +9,69 @@
 
     <item-meta [item]="item"></item-meta>
 
-    <app-picture *ngIf="item.featured_image as img" class="item-details__featured-image" [img]="img.variants.lg" [alt]="img.description" [lazyLoad]="'eager'"></app-picture>
-
-    <section class="item-details__body">
-      <p *ngIf="item.prependIntro" [innerHTML]="item.intro"></p>
-      <div [outerHTML]="item.body"></div>
-    </section>
-
-    <section class="gallery" *ngIf="item.images">
-      <h2>Képek</h2>
-      <div class="lightbox">
-        <a *ngFor="let img of item.images | keyvalue" href="{{ img.value.variants.lg.url }}" target="_blank" class="img-hover-effect">
-          <img class="item-details__img" src="{{ img.value.variants.sm.url }}" [width]="img.value.variants.sm.width" [height]="img.value.variants.sm.height" alt="{{ img.value.description }}" />
-        </a>
-      </div>
-      <p class="m-0" *ngIf="item.photographer">Fotó: {{ item.photographer.join(', ') }}</p>
-    </section>
-
-    <section class="videos" *ngIf="item.videos">
-      <h2>Videók</h2>
+    <div class="item-details__content">
       <div>
-        <embed-video *ngFor="let url of item.videos" [url]="url" [width]="800" [height]="600" [autoplay]="true" class="item-details__video"></embed-video>
-      </div>
-    </section>
+        <app-picture *ngIf="item.featured_image as img" class="item-details__featured-image" [img]="img.variants.lg" [alt]="img.description" [lazyLoad]="'eager'"></app-picture>
 
-    <section class="item-details__data" *ngIf="item.template === 'play'">
-      <h2>Infó</h2>
-      <ul>
-        <li *ngIf="item.premier">
-          <strong>Premier</strong>: {{ item.premier.datetime | date:'y.M.d. H:mm' }}<span *ngIf="(getTheater(item.premier.theater_id) | async) as theater">, {{ theater?.title }}
-            <a *ngIf="item.premier.link" href="{{ item.premier.link }}" target="_blank">
-              <svg-icon [name]="'external-link'" class="icon-external-link"></svg-icon>
+        <section class="gallery" *ngIf="item.images">
+          <div class="lightbox">
+            <a *ngFor="let img of item.images | keyvalue" href="{{ img.value.variants.lg.url }}" target="_blank" class="img-hover-effect">
+              <img class="item-details__img" src="{{ img.value.variants.sm.url }}" [width]="img.value.variants.sm.width" [height]="img.value.variants.sm.height" alt="{{ img.value.description }}" />
             </a>
-          </span>
-        </li>
-        <li *ngIf="item.role === 'actor' && item.author">
-          <strong>Szerző</strong>: {{ item.author }}
-        </li>
-      </ul>
-    </section>
+          </div>
+          <p class="m-0 text-faded" *ngIf="item.photographer">
+            <small>Fotó:
+              {{ item.photographer.join(', ') }}</small>
+          </p>
+        </section>
 
-    <section class="item-details__data" *ngIf="['critic', 'interview'].indexOf(item.template) !== -1">
-      <h2>Infó</h2>
-      <ul>
-        <li *ngIf="item.author">
-          <strong>Szerző</strong>: {{ item.author }} <a *ngIf="item.link" href="{{ item.link }}" target="_blank">
-            <svg-icon [name]="'external-link'" class="icon-external-link"></svg-icon>
-          </a>
-        </li>
-        <li *ngIf="(getItem(item.play_ref_id) | async) as playRef">
-          <strong>Előadás</strong>: <a [routerLink]="['/eloadas', playRef.name]">{{ playRef.title }}</a>
-        </li>
-      </ul>
-    </section>
+        <section class="item-details__body">
+          <p *ngIf="item.prependIntro" [innerHTML]="item.intro"></p>
+          <div [outerHTML]="item.body"></div>
+        </section>
+      </div>
 
+      <aside>
+        <section class="videos" *ngIf="item.videos">
+          <div>
+            <embed-video *ngFor="let url of item.videos" [url]="url" [width]="800" [height]="600" [autoplay]="true" class="item-details__video"></embed-video>
+          </div>
+        </section>
+
+        <section class="item-details__data" *ngIf="item.template === 'play'">
+          <ul>
+            <li *ngIf="item.premier">
+              <strong>Premier</strong><br>
+              {{ item.premier.datetime | date:'y.M.d. H:mm' }}<span *ngIf="(getTheater(item.premier.theater_id) | async) as theater">,
+                {{ theater?.title }}
+                <a *ngIf="item.premier.link" href="{{ item.premier.link }}" target="_blank">
+                  <svg-icon [name]="'external-link'" class="icon-external-link"></svg-icon>
+                </a>
+              </span>
+            </li>
+            <li *ngIf="item.role === 'actor' && item.author">
+              <strong>Szerző</strong><br>
+              {{ item.author }}
+            </li>
+          </ul>
+        </section>
+
+        <section class="item-details__data" *ngIf="['critic', 'interview'].indexOf(item.template) !== -1">
+          <ul>
+            <li *ngIf="item.author">
+              <strong>Szerző</strong><br>
+              {{ item.author }}
+              <a *ngIf="item.link" href="{{ item.link }}" target="_blank">
+                <svg-icon [name]="'external-link'" class="icon-external-link"></svg-icon>
+              </a>
+            </li>
+            <li *ngIf="(getItem(item.play_ref_id) | async) as playRef">
+              <strong>Előadás</strong><br>
+              <a [routerLink]="['/eloadas', playRef.name]">{{ playRef.title }}</a>
+            </li>
+          </ul>
+        </section>
+      </aside>
+    </div>
   </div>
 </div>

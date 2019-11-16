@@ -298,7 +298,7 @@ a.img-hover-effect {
 .item {
   &__thumblink {
     display: block;
-    margin-bottom: -1.4rem;
+    margin-bottom: -1rem;
 
     img {
       display: block;
@@ -344,7 +344,15 @@ picture {
 }
 
 .item-details {
-  max-width: 50rem;
+  &__content {
+    @media ($desktop) {
+      @include _fg(5 3, 0, 0);
+
+      >aside {
+        padding-left: 2rem;
+      }
+    }
+  }
 
   h1 {
     margin-bottom: 0;
@@ -352,7 +360,6 @@ picture {
 
   section {
     @extend .clearfix;
-    margin-bottom: 1rem;
   }
 
   h2 {
@@ -369,11 +376,25 @@ picture {
 
   &__featured-image {
     margin-bottom: 1rem;
+
+    img {
+      min-width: 100%;
+    }
   }
 
   &__data {
     ul {
-      padding-left: 1.125rem;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    li {
+      padding-bottom: 0.75rem;
+      margin-bottom: 0.75rem;
+
+      &:not(:last-child) {
+        border-bottom: 1px solid rgba($base, 25%);
+      }
     }
   }
 }
@@ -638,11 +659,6 @@ h3 {
     &.active {
       color: $plum !important;
     }
-
-    // &:not(.active) {
-    //   text-decoration: none !important;
-    // }
-
   }
 
   a {
@@ -656,8 +672,17 @@ h3 {
   }
 }
 
+.gallery {
+  margin-bottom: 1.5rem;
+}
+
+.text-faded {
+  color: rgba($base, 70%);
+}
+
 .lightbox {
   @extend .clearfix;
+  margin-top: -0.5rem;
 
   a {
     display: block;
@@ -665,11 +690,24 @@ h3 {
     margin: 0 0.5rem 0.5rem 0;
   }
 
+  @media ($desktop) {
+    @include _fg(5, 0.5rem, 0);
+
+    >a {
+      margin: 0 0 0.5rem 0.5rem;
+    }
+  }
+
   img {
     display: block;
+    width: 6rem;
 
-    @media($max-mobile) {
-      width: 6rem;
+    @media($tablet) {
+      width: 8rem;
+    }
+
+    @media($desktop) {
+      width: auto;
     }
   }
 }
@@ -695,7 +733,6 @@ h3 {
 
 embed-video {
   max-width: 100%;
-  margin-bottom: 1.5rem;
 }
 
 .embed-wrap {
@@ -705,6 +742,10 @@ embed-video {
 .embed-wrap>div {
   position: relative;
   height: 0;
+}
+
+.embed-wrap p {
+  margin-top: 0.5rem;
 }
 
 .embed-wrap iframe,
@@ -727,7 +768,7 @@ embed-video {
   cursor: pointer;
 
   svg {
-    width: 5rem;
+    width: 4rem;
     display: block;
     height: auto;
 
@@ -762,6 +803,10 @@ embed-video {
   }
 }
 
+app-picture {
+  display: block;
+}
+
 .bio {
   @media($hd) {
     column-count: 2;
@@ -782,10 +827,6 @@ embed-video {
       left: -4rem;
       font-size: 1.125rem;
     }
-  }
-
-  app-picture {
-    display: block;
   }
 
   &__thumblink {

@@ -1,9 +1,9 @@
 <div *ngIf="videoData" class="embed-wrap" [ngStyle]="{'width': width + 'px'}">
-  <p>{{ videoData.title }}</p>
   <div [ngStyle]="{'padding-bottom': (videoData.ratio | percent)}">
     <img src="{{ videoData.thumbnail_url }}" alt="">
     <span class="play-icon" (click)="replaceImage($event)">
       <svg [outerHTML]="'play-circle' | inlineSvg"></svg>
     </span>
   </div>
+  <p>{{ videoData.title }}</p>
 </div>
