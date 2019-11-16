@@ -8,11 +8,13 @@ if ($page->template->name !== 'api') {
 	die('Not allowed');
 }
 	
-header("Content-type: application/json");
+header('Content-type: application/json');
 
 require_once(__DIR__ . '/SiteMap.php');
 
-if (wire('input')->urlSegment1 === 'items') {
+$urlSegment1 = wire('input')->urlSegment1;
+
+if ($urlSegment1 === 'items') {
 	$apiData = wire('cache')->get('apiData', '+5 minutes', function () {
 		$items = wire('pages')->find('template=play|critic|interview, limit=999, sort=-date');
 		$itemsArray = array_map('\ProcessWire\getItemData', $items->getArray());
@@ -28,8 +30,47 @@ if (wire('input')->urlSegment1 === 'items') {
 
 	echo json_encode((object) $apiData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 }
+else if ($urlSegment1 === 'contact')
+{
+	echo processContactForm();
+}
 
 exit;
+
+function processContactForm() {
+	$result = [
+		'success' => false,
+		'error' => 'Hiba történt, kérjük próbálja újra.',
+		'message' => ''
+	];
+
+	$rest_json = file_get_contents("php://input");
+	$_POST = json_decode($rest_json, true);
+
+	if(empty($_POST) || empty($_POST['name']) || empty($_POST['email']) || empty($_POST['message'])) {
+		return json_encode((object) $result);
+	}
+
+	$result['success'] = true;
+	$result['error'] = '';
+	$result['message'] = 'Üzenetét továbbítottuk, köszönjük!';
+
+	$name = wire('sanitizer')->text($_POST['name']);
+	$email = wire('sanitizer')->email($_POST['email']);
+	$phone = wire('sanitizer')->text($_POST['phone']);
+	$message = wire('sanitizer')->textarea($_POST['message']);
+
+	wire('log')->save('contact-form', implode(' | ', [$name, $email, $phone, $message]));
+
+	wire('mail')->send(
+		wire('config')->contactFormEmail,
+		$email,
+		'Új üzenet: baksaimre.hu (' . $name . ')',
+		$message . "\r\n\r\n" . $name . "\r\n" . $email
+	);
+
+	return json_encode((object) $result);
+}
 
 function saveSiteMap($items) {
 	$sitemap = new \SiteMap($items);

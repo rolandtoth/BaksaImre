@@ -2,20 +2,31 @@
   <div class="side-push">
     <h1>{{ title }}</h1>
 
-    <h2>{{ settings.siteName }}</h2>
+    <div class="contact-details-wrap">
 
-    <p class="subtitle">
-      {{ settings.jobTitle }}
-    </p>
+      <div class="contact-data">
+        <h3><strong>{{ settings.siteName }}</strong></h3>
 
-    <div class="contact-details">
-      <p>
-        <svg [outerHTML]="'phone' | inlineSvg"></svg> {{ settings.phone }}
-      </p>
+        <p class="subtitle">
+          {{ settings.jobTitle }}
+        </p>
 
-      <p>
-        <svg [outerHTML]="'mail' | inlineSvg"></svg>{{ settings.email }}
-      </p>
+        <div class="contact-details">
+          <p>
+            <svg [outerHTML]="'phone' | inlineSvg"></svg> {{ settings.phone }}
+          </p>
+
+          <p>
+            <svg [outerHTML]="'mail' | inlineSvg"></svg>{{ settings.email }}
+          </p>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap">
+        <h3><strong>Üzenet küldése</strong></h3>
+        <contact-form></contact-form>
+      </div>
     </div>
+
   </div>
 </div>

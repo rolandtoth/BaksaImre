@@ -411,10 +411,9 @@ button {
   background: $plum;
   color: white;
   border: none;
-  font-size: 0.84rem;
+  font-size: 0.94rem;
   letter-spacing: 0.5px;
   text-align: center;
-  text-transform: uppercase;
   line-height: 1 !important;
   padding: 0.64rem 1.2rem 0.5rem;
   user-select: none;
@@ -426,10 +425,14 @@ button {
     color: white;
   }
 
+  &[disabled] {
+    background: #eee !important;
+    color: #999;
+    cursor: not-allowed;
+  }
+
   @media($tablet) {
-    letter-spacing: 2px;
-    font-size: 0.92rem;
-    padding: 1.24rem 2.4rem 1.08rem;
+    padding: 0.84rem 1.5rem;
   }
 }
 
@@ -805,6 +808,82 @@ embed-video {
 
 app-picture {
   display: block;
+}
+
+.contact-details-wrap {
+  h3 {
+    margin-top: 0;
+  }
+
+  @media ($desktop) {
+    @include _fg(2 3, 2rem, 0);
+
+    // >a {
+    //   margin: 0 0 0.5rem 0.5rem;
+    // }
+  }
+}
+
+.contact-form-wrap {
+  max-width: 24rem;
+
+  @media($desktop) {
+    max-width: 48rem;
+  }
+}
+
+form {
+  .form-group {
+    margin-bottom: 0.5rem;
+  }
+
+  label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 400;
+    cursor: pointer;
+    position: relative;
+
+    @media($tablet) {
+      width: 9rem;
+      float: left;
+      margin-right: 1rem;
+      top: 0.5rem;
+    }
+  }
+
+  input,
+  textarea {
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+
+    &.ng-invalid.ng-dirty {
+      border-bottom-color: crimson;
+      background-color: rgba(crimson, 4%);
+    }
+
+    @media($desktop) {
+      width: 24rem;
+    }
+  }
+
+  .error {
+    display: block;
+    margin: 0.2rem 0;
+    color: crimson;
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+
+  @media($desktop) {
+
+    button[type="submit"],
+    .error {
+      margin-left: 10rem;
+    }
+  }
 }
 
 .bio {

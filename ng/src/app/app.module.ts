@@ -1,6 +1,7 @@
 import {NgModule, CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA} from '@angular/core'
 import {BrowserModule} from '@angular/platform-browser'
 import {HttpClientModule} from '@angular/common/http'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 
 import {AppRoutingModule} from './app-routing.module'
 
@@ -35,9 +36,16 @@ import {ItemMetaComponent} from './shared/item-meta/item-meta.component'
 import {PictureComponent} from './shared/picture/picture.component'
 import {SharingButtonsComponent} from './shared/sharing-buttons/sharing-buttons.component'
 import {ButttonFocusRemover} from './shared/button-focus-remover.directive'
+import {ContactFormComponent} from './contact-form/contact-form.component'
 
 @NgModule({
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
+  ],
   declarations: [
     AppComponent,
     ItemsComponent,
@@ -60,7 +68,8 @@ import {ButttonFocusRemover} from './shared/button-focus-remover.directive'
     ItemMetaComponent,
     PictureComponent,
     SharingButtonsComponent,
-    ButttonFocusRemover
+    ButttonFocusRemover,
+    ContactFormComponent
   ],
   providers: [
     HttpClientModule,

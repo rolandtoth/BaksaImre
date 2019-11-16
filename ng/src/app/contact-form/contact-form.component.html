@@ -1,0 +1,38 @@
+<div *ngIf="formSuccess">
+  <p><em>{{ successMessage }}</em></p>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="processForm()" *ngIf="!formSuccess">
+  <div class="form-group">
+    <label for="name">Név:</label>
+    <input type="text" id="name" formControlName="name">
+    <div *ngIf="name.dirty && name.invalid" class="error">
+      <div *ngIf="name.errors.required">Kötelező mező</div>
+      <div *ngIf="name.errors.minlength">Kérjük, legalább {{ name.errors.minlength.requiredLength }} karaktert írjon be</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="email" id="email" formControlName="email">
+    <div *ngIf="email.dirty && email.invalid" class="error">
+      <div *ngIf="email.errors.required">Kötelező mező</div>
+      <div *ngIf="email.errors.email">Érvénytelen email cím</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="phone">Telefon:</label>
+    <input type="phone" id="phone" formControlName="phone">
+  </div>
+  <div class="form-group">
+    <label for="message">Üzenet:</label>
+    <textarea id="message" cols="30" rows="7" formControlName="message"></textarea>
+    <div *ngIf="message.dirty && message.invalid" class="error">
+      <div *ngIf="message.errors.required">Kötelező mező</div>
+      <div *ngIf="message.errors.minlength">Kérjük, legalább {{ message.errors.minlength.requiredLength }} karaktert írjon be</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <button type="submit" id="submit" [disabled]="form.invalid || processing">Küldés</button>
+  </div>
+  <p class="error errors" *ngIf="form.errors">Hiba történt, kérjük próbálja újra.</p>
+</form>
