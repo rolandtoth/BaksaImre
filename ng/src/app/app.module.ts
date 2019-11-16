@@ -33,7 +33,6 @@ import {EmbedVideoComponent} from './shared/embed-video/embed-video.component'
 import {ImageUrlPipe} from './shared/pipes/image-url.pipe'
 import {ItemMetaComponent} from './shared/item-meta/item-meta.component'
 import {PictureComponent} from './shared/picture/picture.component'
-import {SiteMapComponent} from './sitemap/sitemap.component'
 import {SharingButtonsComponent} from './shared/sharing-buttons/sharing-buttons.component'
 import {ButttonFocusRemover} from './shared/button-focus-remover.directive'
 
@@ -60,7 +59,6 @@ import {ButttonFocusRemover} from './shared/button-focus-remover.directive'
     ImageUrlPipe,
     ItemMetaComponent,
     PictureComponent,
-    SiteMapComponent,
     SharingButtonsComponent,
     ButttonFocusRemover
   ],
