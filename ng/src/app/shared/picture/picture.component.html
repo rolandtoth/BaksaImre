@@ -1,4 +1,4 @@
-<picture *ngIf="img">
+<picture *ngIf="img" [nStyle]="{width: img.width + 'px', height: img.height + 'px'}">
   <source srcset=" {{ img.url.replace('.jpg', '.webp') }}" type="image/webp">
-  <img loading="lazy" src="{{ img.url }}" alt="{{ alt }}" [width]="img.width" [height]="img.height">
+  <img loading="{{ lazyLoad }}" src="{{ img.url }}" alt="{{ alt }}" [width]="img.width" [height]="img.height">
 </picture>

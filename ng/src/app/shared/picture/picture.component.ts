@@ -8,6 +8,7 @@ import {Component, OnInit, Input} from '@angular/core'
 export class PictureComponent implements OnInit {
   @Input() img: Image
   @Input() alt: string
+  @Input() lazyLoad: string = 'auto'
 
   constructor() {}
 

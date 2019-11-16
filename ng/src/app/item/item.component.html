@@ -9,7 +9,7 @@
 
     <item-meta [item]="item"></item-meta>
 
-    <app-picture *ngIf="item.featured_image as img" class="item-details__featured-image" [img]="img.variants.lg" [alt]="img.description"></app-picture>
+    <app-picture *ngIf="item.featured_image as img" class="item-details__featured-image" [img]="img.variants.lg" [alt]="img.description" [lazyLoad]="'eager'"></app-picture>
 
     <section class="item-details__body">
       <p *ngIf="item.prependIntro" [innerHTML]="item.intro"></p>
