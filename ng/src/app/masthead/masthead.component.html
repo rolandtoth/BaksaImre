@@ -11,7 +11,8 @@
     </div>
     <div class="navs">
       <nav class="filters">
-        <span class="type-filter" *ngFor="let navItem of nav" [class.active]="currentFilter === navItem.type" (click)="setFilterBy(navItem.type)">{{ navItem.name }}</span>
+        <span class="type-filter" *ngFor="let navItem of nav" [class.active]="currentFilter === navItem.type" [attr.filter-type]="navItem.type"
+          (click)="setFilterBy(navItem.type)">{{ navItem.name }}</span>
       </nav>
       <nav class="contacts">
         <a [routerLink]="['oneletrajz']" (click)="resetFilters()" routerLinkActive="active" class="biography" title="Önéletrajz">

@@ -46,7 +46,6 @@ export class ApiService {
   }
 
   saveContact(formData: Contact): Observable<Contact> {
-    console.log(formData)
     return this.http
       .post<Contact>('/pw/api/contact', formData, this.httpOptions)
       .pipe(catchError(this.handleError<Contact>('saveContact', null)))

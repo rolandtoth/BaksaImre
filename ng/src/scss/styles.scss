@@ -3,6 +3,8 @@ $base: #333;
 $lightbase: lighten($base, 25%);
 $plum: #CF2543;
 $images: "/assets/images";
+$colorCritic: #693790;
+$colorInterview: #008a7c;
 
 // breakpoints
 $_mobile: 480;
@@ -314,6 +316,14 @@ a.img-hover-effect {
     margin-left: $size;
     position: relative;
     z-index: 4;
+
+    [item-type="critic"] & {
+      @include highlightLines($size: $size, $color: $colorCritic);
+    }
+
+    [item-type="interview"] & {
+      @include highlightLines($size: $size, $color: $colorInterview);
+    }
 
     a {
       text-decoration: none;
@@ -660,8 +670,16 @@ h3 {
     }
 
     &.active {
-      color: $plum !important;
+      color: $plum;
     }
+
+    // &[filter-type="critic"].active {
+    //   color: $colorCritic;
+    // }
+
+    // &[filter-type="interview"].active {
+    //   color: $colorInterview;
+    // }
   }
 
   a {

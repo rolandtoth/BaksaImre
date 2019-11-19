@@ -42,7 +42,7 @@ export class ItemComponent implements OnInit, AfterViewInit {
           '../assets/scripts/baguetteBox/baguetteBox.min.js',
           () => {
             baguetteBox.run('.lightbox', {
-              animation: 'fadeIn',
+              // animation: 'fadeIn',
               async: true,
               fullScreen: false,
               noScrollbars: false
