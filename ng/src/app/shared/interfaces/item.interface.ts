@@ -10,7 +10,7 @@ export interface Item {
   figure: string
   template: string
   intro: string
-  prependIntro: boolean
+  prepend_intro: boolean
   body: string
   path: string
   premier: Premier

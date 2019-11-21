@@ -4,7 +4,7 @@ $lightbase: lighten($base, 25%);
 $plum: #CF2543;
 $images: "/assets/images";
 $colorCritic: #693790;
-$colorInterview: #008a7c;
+$colorInterview: #007f8a;
 
 // breakpoints
 $_mobile: 480;
@@ -308,7 +308,7 @@ a.img-hover-effect {
   }
 
   &__title {
-    $size: 0.33rem;
+    $size: 5px;
     @include highlightLines($size: $size, $color: $plum);
     margin-bottom: 0.5rem;
     padding: $size;
@@ -319,10 +319,18 @@ a.img-hover-effect {
 
     [item-type="critic"] & {
       @include highlightLines($size: $size, $color: $colorCritic);
+      background: linear-gradient(75deg, $colorCritic, $plum);
+
+      box-shadow: $size 0 0 $plum,
+        -$size 0 0 $colorCritic;
     }
 
     [item-type="interview"] & {
       @include highlightLines($size: $size, $color: $colorInterview);
+      background: linear-gradient(75deg, $colorInterview, $plum);
+
+      box-shadow: $size 0 0 $plum,
+        -$size 0 0 $colorInterview;
     }
 
     a {
@@ -672,14 +680,6 @@ h3 {
     &.active {
       color: $plum;
     }
-
-    // &[filter-type="critic"].active {
-    //   color: $colorCritic;
-    // }
-
-    // &[filter-type="interview"].active {
-    //   color: $colorInterview;
-    // }
   }
 
   a {
