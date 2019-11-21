@@ -11,13 +11,16 @@ export class EmbedVideoComponent implements OnInit {
   @Input() width: number
   @Input() height: number
   @Input() autoplay: boolean = true
-  videoData: VideoData
+  videoData: VideoData|{[key: string]: string} = {}
 
   constructor(private videoService: VideoService) {}
 
   ngOnInit() {
+    this.videoData.ratio = 0.75
+
     this.videoService.getVideoData(this.url).subscribe(data => {
-      data.ratio = data.height / data.width
+      // data.ratio = data.height / data.width
+      data.ratio = data.thumbnail_height / data.thumbnail_width
 
       if (this.autoplay) {
         data.html = this.addAutoPlayParam(data.html)

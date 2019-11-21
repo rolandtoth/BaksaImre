@@ -1,4 +1,5 @@
 export interface VideoData {
+  author_name: string
   width: number
   height: number
   thumbnail_width: number
