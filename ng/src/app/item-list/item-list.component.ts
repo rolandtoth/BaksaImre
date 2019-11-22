@@ -1,6 +1,5 @@
 import {ItemTypePipe} from './../shared/pipes/item-type.pipe'
 import {Component, OnInit, OnChanges, Input} from '@angular/core'
-import {AppSettings} from './../shared/app-settings'
 import {ItemType} from '../shared/pipes/item-type.enum'
 import {DataService} from '../services/data.service'
 import {Item} from '../shared/interfaces/item.interface'
@@ -23,7 +22,6 @@ export class ItemListComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges() {
-    window.scroll(0, 0)
     if (this.items) {
       this.filterItems(this.filterBy, this.filterByYear)
     }

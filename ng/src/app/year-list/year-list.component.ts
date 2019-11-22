@@ -40,6 +40,7 @@ export class YearListComponent implements OnInit, OnChanges {
   filterByYear(value?: number) {
     this.data.changeFilterByYear(value === this.currentYear ? null : value)
     this.currentYear = this.data.getFilterByYear()
+    window.scrollTo(0, 0)
   }
 
   updateFilterByYear() {

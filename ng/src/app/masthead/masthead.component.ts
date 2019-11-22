@@ -31,12 +31,14 @@ export class MastheadComponent {
       )
       this.currentFilter = this.data.getFilterBy()
     }
+    window.scrollTo(0, 0)
   }
 
   resetFilters() {
     this.currentFilter = ItemType.All
     this.data.changeFilterBy(ItemType.All)
     this.data.changeFilterByYear(null)
+    window.scrollTo(0, 0)
   }
 
   nav: NavItems[] = [

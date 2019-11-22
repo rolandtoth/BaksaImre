@@ -5,9 +5,11 @@ import {
   Router,
   NavigationEnd,
   NavigationError,
-  NavigationCancel
+  NavigationCancel,
+  Scroll
 } from '@angular/router'
-import {filter, take} from 'rxjs/operators'
+import {filter, take, delay} from 'rxjs/operators'
+import {ViewportScroller} from '@angular/common'
 
 @Component({
   selector: 'app-root',
@@ -17,7 +19,11 @@ export class AppComponent implements OnInit {
   loading: boolean = true
   siteName: string = AppSettings.siteName
 
-  constructor(private titleService: TitleService, private router: Router) {
+  constructor(
+    private titleService: TitleService,
+    private router: Router,
+    private viewportScroller: ViewportScroller
+  ) {
     this.router.events
       .pipe(
         filter(
@@ -30,6 +36,21 @@ export class AppComponent implements OnInit {
       )
       .subscribe(e => {
         this.loading = false
+      })
+
+    this.router.events
+      .pipe(
+        filter((e: any): e is Scroll => e instanceof Scroll),
+        delay(0)
+      )
+      .subscribe(e => {
+        if (e.position) {
+          viewportScroller.scrollToPosition(e.position)
+        } else if (e.anchor) {
+          viewportScroller.scrollToAnchor(e.anchor)
+        } else {
+          viewportScroller.scrollToPosition([0, 0])
+        }
       })
   }
 

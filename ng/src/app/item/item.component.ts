@@ -54,6 +54,15 @@ export class ItemComponent implements OnInit, AfterViewInit {
     )
   }
 
+  goBack(e: MouseEvent) {
+    e.preventDefault()
+    if (window.history.length > 1) {
+      window.history.back()
+    } else {
+      this.router.navigate(['/'])
+    }
+  }
+
   ngOnInit() {
     let item = this.route.snapshot.data.item
     let type = this.itemTypePipe.transform(item.template, true)

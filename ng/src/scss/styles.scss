@@ -289,6 +289,8 @@ footer {
     height: 0;
     padding-top: 66.667%;
     background: #f8f8f8;
+    overflow: hidden;
+
     img {
       position: absolute;
       top: 0;
@@ -779,9 +781,11 @@ embed-video {
 
   p {
     margin-top: 0.5rem;
+
     span {
       display: block;
     }
+
     .author {
       margin-top: -0.25rem;
     }
