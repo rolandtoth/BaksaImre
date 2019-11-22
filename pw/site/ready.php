@@ -1,4 +1,6 @@
-<?php namespace ProcessWire;
+<?php
+
+namespace ProcessWire;
 
 if ($page->template->name === 'admin') {
 	return;
@@ -7,7 +9,7 @@ if ($page->template->name === 'admin') {
 if ($page->template->name !== 'api') {
 	die('Not allowed');
 }
-	
+
 header('Content-type: application/json');
 
 require_once(__DIR__ . '/SiteMap.php');
@@ -29,15 +31,14 @@ if ($urlSegment1 === 'items') {
 	});
 
 	echo json_encode((object) $apiData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
-}
-else if ($urlSegment1 === 'contact')
-{
+} else if ($urlSegment1 === 'contact') {
 	echo processContactForm();
 }
 
 exit;
 
-function processContactForm() {
+function processContactForm()
+{
 	$result = [
 		'success' => false,
 		'error' => 'Hiba történt, kérjük próbálja újra.',
@@ -47,7 +48,7 @@ function processContactForm() {
 	$rest_json = file_get_contents("php://input");
 	$_POST = json_decode($rest_json, true);
 
-	if(empty($_POST) || empty($_POST['name']) || empty($_POST['email']) || empty($_POST['message'])) {
+	if (empty($_POST) || empty($_POST['name']) || empty($_POST['email']) || empty($_POST['message'])) {
 		return json_encode((object) $result);
 	}
 
@@ -72,19 +73,21 @@ function processContactForm() {
 	return json_encode((object) $result);
 }
 
-function saveSiteMap($items) {
+function saveSiteMap($items)
+{
 	$sitemap = new \SiteMap($items);
 	$sitemap->saveXML(__DIR__ . '/../../sitemap.xml');
 }
 
-function saveMeta($items) {
+function saveMeta($items)
+{
 	$data = [];
-    $domain = 'https://baksaimre.hu';
+	$domain = 'https://baksaimre.hu';
 
-	foreach($items as $p) {
+	foreach ($items as $p) {
 		$categorySegment = '';
 
-		switch($p->template) {
+		switch ($p->template) {
 			case 'play':
 				$categorySegment = 'eloadas/';
 				break;
@@ -96,7 +99,7 @@ function saveMeta($items) {
 				break;
 		}
 
-		$featured_image = $p->featured_image ? $p->featured_image->size(600,315, ['upscale' => false]) : null;
+		$featured_image = $p->featured_image ? $p->featured_image->size(600, 315, ['upscale' => false]) : null;
 
 		$data[$categorySegment . $p->name] = [
 			'title' => $p->title,
@@ -184,7 +187,7 @@ function getImageData($img)
 	$settings = [
 		['xs' => [96, 64, null]],
 		['sm' => [192, 128, null]],
-		['md' => [420, 280, null]],
+		['md' => [480, 320, null]],
 		['lg' => [990, 0, ['upscaling' => false]]]
 	];
 

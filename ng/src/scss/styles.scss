@@ -293,6 +293,7 @@ footer {
       position: absolute;
       top: 0;
       left: 0;
+      min-width: 100%;
     }
   }
 }
@@ -843,7 +844,7 @@ embed-video {
 .container {
   margin: 0 auto;
   padding: 0 1rem;
-  max-width: 1480px;
+  max-width: 1680px;
 
   @media($tablet) {
     padding: 0 2rem;
