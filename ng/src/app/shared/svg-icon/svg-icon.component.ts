@@ -8,7 +8,7 @@ declare let require: any
 @Component({
   selector: 'svg-icon',
   template: `
-    <div [outerHTML]="icon | safeHtml"></div>
+    <div [outerHTML]="icon | safe:'html'"></div>
   `
 })
 export class SvgIconComponent implements OnInit {

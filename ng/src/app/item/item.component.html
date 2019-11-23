@@ -27,7 +27,7 @@
 
         <section class="item-details__body">
           <p *ngIf="item.prepend_intro" [innerHTML]="item.intro"></p>
-          <div [outerHTML]="item.body | safeHtml"></div>
+          <div [outerHTML]="item.body | safe:'html'"></div>
         </section>
       </div>
 

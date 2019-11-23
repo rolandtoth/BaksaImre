@@ -19,7 +19,7 @@ import {ItemListComponent} from './item-list/item-list.component'
 import {MastheadComponent} from './masthead/masthead.component'
 import {YearListComponent} from './year-list/year-list.component'
 
-import {SafeHtmlPipe} from './shared/pipes/safe-html.pipe'
+import {SafePipe} from './shared/pipes/safe.pipe'
 import {ItemTypePipe} from './shared/pipes/item-type.pipe'
 import {BiographyComponent} from './biography/biography.component'
 import {PlaysResolver} from './services/plays-resolver.service'
@@ -53,7 +53,7 @@ import {ContactFormComponent} from './contact-form/contact-form.component'
     ItemTypePipe,
     ItemListComponent,
     MastheadComponent,
-    SafeHtmlPipe,
+    SafePipe,
     YearListComponent,
     BiographyComponent,
     GroupByPipe,
