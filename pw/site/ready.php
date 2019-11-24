@@ -184,7 +184,7 @@ function getImageData($img)
 	$settings = [
 		['xs' => [96, 64, null]],
 		['sm' => [192, 128, null]],
-		['md' => [480, 320, null]],
+		['md' => [468, 312, null]],
 		['lg' => [990, 0, ['upscaling' => false]]]
 	];
 

@@ -855,7 +855,7 @@ embed-video {
   }
 
   @media($desktop) {
-    padding: 0 3rem;
+    padding: 0 calc(3rem + 2rem) 0 3rem;
   }
 }
 
