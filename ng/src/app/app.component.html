@@ -7,6 +7,10 @@
   <div class="container">
     <p class="side-push">
       &copy; {{ siteName }}
+      <a href="{{ developerUrl }}" target="_blank" class="developer-link">{{ developerName}}</a>
+      <a (click)="scrollTop()" class="top">
+        <svg [outerHTML]="'chevron-up' | inlineSvg"></svg>
+      </a>
     </p>
   </div>
 </footer>

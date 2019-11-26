@@ -855,7 +855,7 @@ embed-video {
   }
 
   @media($desktop) {
-    padding: 0 calc(3rem + 2rem) 0 3rem;
+    padding: 0 calc(3rem + 1rem) 0 3rem;
   }
 }
 
@@ -1046,6 +1046,35 @@ form {
         * {
           stroke: $plum
         }
+      }
+    }
+  }
+}
+
+.developer-link {
+  text-decoration: none;
+  color: rgba($base, 0.33);
+  margin-left: 2rem;
+
+  &:hover {
+    color: rgba($base, 0.7);
+  }
+}
+
+.top {
+  display: block;
+  line-height: 1;
+  font-size: 0;
+  float: right;
+  padding: 0.25rem;
+  margin-top: -0.25rem;
+
+  @media($desktop) {
+    &:hover {
+      cursor: pointer;
+
+      svg * {
+        stroke: $plum;
       }
     }
   }

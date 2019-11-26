@@ -18,6 +18,8 @@ import {ViewportScroller} from '@angular/common'
 export class AppComponent implements OnInit {
   loading: boolean = true
   siteName: string = AppSettings.siteName
+  developerName: string = AppSettings.developerName
+  developerUrl: string = AppSettings.developerUrl
 
   constructor(
     private titleService: TitleService,
@@ -56,5 +58,9 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.titleService.boot()
+  }
+
+  scrollTop() {
+    this.viewportScroller.scrollToPosition([0, 0])
   }
 }
