@@ -1,10 +1,14 @@
 // variables
-$base: #333;
-$lightbase: lighten($base, 25%);
-$plum: #CF2543;
+$baseDark: #363636;
+$base: rgba(white, 0.92);
+$lightbase: rgba(white, 0.4);
+// $plum: #CF2543;
+$plum: hsla(349, 70%, 54%, 1);
 $images: "/assets/images";
 $colorCritic: #693790;
 $colorInterview: #007f8a;
+$bgColor: hsla(200, 50%, 30%, 1);
+$errorColor: hsla(349, 86%, 56%, 1);
 
 // breakpoints
 $_mobile: 480;
@@ -73,7 +77,7 @@ ol {
 }
 
 ::selection {
-  background: $plum;
+  background: $bgColor;
   color: white;
 }
 
@@ -82,7 +86,7 @@ a {
   text-decoration: underline;
 
   &:hover {
-    color: saturate(darken($plum, 20%), 20%);
+    color: saturate(darken($plum, 12%), 16%);
   }
 
   @media ($desktop) {
@@ -107,7 +111,7 @@ body {
   font-size: 15px;
   font-weight: 300;
   position: relative;
-  background: white;
+  background: $bgColor;
 
   @media ($tablet) {
     font-size: 16px;
@@ -199,6 +203,11 @@ svg {
       cursor: pointer;
     }
 
+    li:hover span,
+    li.active span {
+      text-shadow: 0 0 1px $plum, 0 0 1px $plum;
+    }
+
     li:hover span {
       color: $plum;
     }
@@ -228,7 +237,7 @@ main {
 }
 
 footer {
-  border-top: 1px solid #ccc;
+  border-top: 1px solid rgba($base, 20%);
   padding-top: 1rem;
   font-size: 0.9rem;
 }
@@ -257,7 +266,7 @@ footer {
 }
 
 .app-loader {
-  @include loader06($size: 48px, $border-size: 1px, $duration: 1.2s, $align: middle, $color: $plum);
+  @include loader06($size: 48px, $border-size: 1px, $duration: 1.2s, $align: middle, $color: $base);
   position: fixed;
   top: 50%;
   left: 50%;
@@ -288,7 +297,6 @@ footer {
     position: relative;
     height: 0;
     padding-top: 66.667%;
-    background: #f8f8f8;
     overflow: hidden;
 
     img {
@@ -307,7 +315,7 @@ a.img-hover-effect {
 
   &:hover {
     img {
-      filter: saturate(1.33) contrast(1.2);
+      filter: saturate(1.3) contrast(1.12);
     }
   }
 }
@@ -367,7 +375,6 @@ picture {
   display: block;
 
   img {
-    background: #f8f8f8;
     display: block;
   }
 }
@@ -451,7 +458,7 @@ button {
   padding: 0.64rem 1.2rem 0.5rem;
   user-select: none;
   text-decoration: none;
-  border-radius: 2px;
+  border-radius: 0;
 
   &:hover {
     background: darken($plum, 12%);
@@ -459,8 +466,8 @@ button {
   }
 
   &[disabled] {
-    background: #eee !important;
-    color: #999;
+    background: white !important;
+    color: rgba($baseDark, 50%);
     cursor: not-allowed;
   }
 
@@ -492,6 +499,7 @@ h2,
 h3 {
   line-height: 1.33;
   font-weight: 300;
+  color: white;
 }
 
 h1 {
@@ -529,8 +537,8 @@ h3 {
   background: white;
   backface-visibility: hidden;
   z-index: 90;
-  border-bottom: 1px solid #ddd;
   user-select: none;
+  color: $baseDark;
 
   @media ($max-tablet) {
     padding-bottom: 0.75rem;
@@ -544,6 +552,12 @@ h3 {
   >.container {
     @include clearfix;
   }
+
+  svg {
+    * {
+      stroke: $baseDark;
+    }
+  }
 }
 
 .branding {
@@ -551,6 +565,11 @@ h3 {
 
   @media($tablet) {
     float: left;
+  }
+
+  &,
+  a {
+    color: $baseDark;
   }
 
   img {
@@ -571,7 +590,6 @@ h3 {
 
     a {
       text-decoration: none;
-      color: $base;
       position: relative;
       cursor: pointer;
       z-index: 1;
@@ -606,8 +624,6 @@ h3 {
 
 .slogan {
   @extend .hidden-tablet;
-
-  color: $lightbase;
   font-size: 0.92rem;
 }
 
@@ -667,7 +683,7 @@ h3 {
 }
 
 .filters {
-  @include listWithSeparator($spacing: 1rem, $color: #ccc);
+  @include listWithSeparator($spacing: 1rem, $color: rgba($baseDark, 25%));
 
   @media ($max-mobile) {
     margin: 0.5rem 0 0 -1.25rem;
@@ -801,10 +817,6 @@ embed-video {
     border: none;
   }
 
-  img {
-    background: #f8f8f8;
-  }
-
   .play-icon {
     position: absolute;
     left: 50%;
@@ -898,10 +910,17 @@ form {
     position: relative;
 
     @media($tablet) {
-      width: 9rem;
+      width: 8rem;
       float: left;
       margin-right: 1rem;
-      top: 0.5rem;
+    }
+
+    +div {
+      position: relative;
+
+      @media($desktop) {
+        margin-left: 9rem;
+      }
     }
   }
 
@@ -910,11 +929,13 @@ form {
     display: block;
     width: 100%;
     padding: 0.5rem;
-    border: 1px solid #ccc;
+    background: white;
+    border: none;
+    color: $baseDark;
 
     &.ng-invalid.ng-dirty {
-      border-bottom-color: crimson;
-      background-color: rgba(crimson, 4%);
+      border-bottom-color: $errorColor;
+      background: lighten($errorColor, 40%);
     }
 
     @media($desktop) {
@@ -925,17 +946,9 @@ form {
   .error {
     display: block;
     margin: 0.2rem 0;
-    color: crimson;
+    color: $errorColor;
     font-size: 0.9rem;
     font-weight: 400;
-  }
-
-  @media($desktop) {
-
-    button[type="submit"],
-    .error {
-      margin-left: 10rem;
-    }
   }
 }
 
