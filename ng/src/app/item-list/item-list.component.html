@@ -4,7 +4,7 @@
   </a>
 
   <h3 class="item__title">
-    <a [routerLink]="['/' + item.template, item.name]">{{ item.title }}</a>
+    <a [routerLink]="['/' + (item.template | itemType:true), item.name]">{{ item.title }}</a>
   </h3>
 
   <item-meta [item]="item"></item-meta>
