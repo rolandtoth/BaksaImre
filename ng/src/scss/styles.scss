@@ -98,7 +98,6 @@ a {
 html {
   overflow-x: hidden;
   overflow-y: scroll;
-  // scroll-behavior: smooth;
 }
 
 body {
@@ -111,7 +110,8 @@ body {
   font-size: 15px;
   font-weight: 300;
   position: relative;
-  background: $bgColor;
+  background-image: radial-gradient(hsla(200, 60%, 25%, 1), hsla(200, 50%, 24%, 1), hsla(200, 30%, 16%, 1));
+  background-attachment: fixed;
 
   @media ($tablet) {
     font-size: 16px;
@@ -167,7 +167,7 @@ svg {
 
     svg {
       * {
-        stroke: $plum;
+        stroke: white;
       }
     }
   }
@@ -484,7 +484,7 @@ button {
 
     &:hover {
       * {
-        stroke: $plum;
+        stroke: white;
       }
     }
   }
@@ -851,7 +851,7 @@ embed-video {
   &.loading {
     .play-icon {
       filter: saturate(0);
-      opacity: 0.33;
+      opacity: 0.25;
       pointer-events: none;
     }
   }
@@ -1057,7 +1057,7 @@ form {
     &:hover {
       svg {
         * {
-          stroke: $plum
+          stroke: white;
         }
       }
     }
@@ -1087,7 +1087,7 @@ form {
       cursor: pointer;
 
       svg * {
-        stroke: $plum;
+        stroke: white;
       }
     }
   }
