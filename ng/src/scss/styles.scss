@@ -110,7 +110,7 @@ body {
   font-size: 15px;
   font-weight: 300;
   position: relative;
-  background-image: radial-gradient(hsl(199, 17%, 32%), hsla(199, 17%, 25%, 1))
+  background-image: radial-gradient(hsl(199, 17%, 32%), hsla(199, 17%, 25%, 1));
   background-attachment: fixed;
 
   @media ($tablet) {
@@ -176,7 +176,7 @@ svg {
 .year-list,
 .back {
   position: sticky;
-  top: 8.25rem;
+  top: 7.75rem;
   float: left;
   backface-visibility: hidden;
   user-select: none;
@@ -191,7 +191,7 @@ svg {
   ul {
     list-style: none;
     padding: 0;
-    margin: -0.5rem 0 0 0;
+    margin: -0.25rem 0 0 0;
 
     span {
       display: inline-block;
@@ -396,6 +396,10 @@ picture {
 
   h1 {
     margin-bottom: 0;
+
+    >span {
+      @include highlightLines($size: 0.5rem, $color: $plum);
+    }
   }
 
   section {
@@ -435,6 +439,10 @@ picture {
       &:not(:last-child) {
         border-bottom: 1px solid rgba($base, 25%);
       }
+    }
+
+    a {
+      color: white;
     }
   }
 }
@@ -508,14 +516,13 @@ h1 {
   margin-bottom: 1.5rem;
 
   @media ($desktop) {
-    font-size: 2.4rem;
+    font-size: 2.32rem;
     margin-bottom: 2rem;
   }
 }
 
 h2 {
   font-size: 1.4rem;
-  // margin: 0 0 1rem;
 
   @media ($desktop) {
     font-size: 1.7rem;
@@ -526,14 +533,14 @@ h3 {
   font-size: 1.175rem;
 
   @media ($desktop) {
-    font-size: 1.25rem;
+    font-size: 1.32rem;
   }
 }
 
 .masthead {
   @include clearfix();
   display: block;
-  padding: 1rem 0 calc(1rem - 1px);
+  padding: 0.75rem 0;
   background: white;
   backface-visibility: hidden;
   z-index: 90;
@@ -986,9 +993,14 @@ form {
 
     +a {
       text-decoration: none;
+      $size: 0.25rem;
+      @include highlightLines($size: $size, $color: darken($plum, 5%));
+      color: white;
+      margin-right: 0.25rem;
 
       &:hover {
-        text-decoration: underline;
+        @include highlightLines($size: $size, $color: $plum);
+        color: white;
       }
     }
   }
@@ -1036,7 +1048,7 @@ form {
 
   @media($desktop) {
     display: inline-block;
-    margin-left: 2.5rem;
+    margin-left: 2rem;
     margin-top: 0;
     position: relative;
     top: 1px;

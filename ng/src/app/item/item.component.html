@@ -4,7 +4,9 @@
   </a>
 
   <div class="item-details side-push">
-    <h1>{{ item.title }}<sharing-buttons class="sharing-buttons-wrap" [url]="shareUrl" [text]="shareText" [tags]="shareTags"></sharing-buttons>
+    <h1>
+      <span>{{ item.title }}</span>
+      <sharing-buttons class="sharing-buttons-wrap" [url]="shareUrl" [text]="shareText" [tags]="shareTags"></sharing-buttons>
     </h1>
 
     <item-meta [item]="item"></item-meta>
