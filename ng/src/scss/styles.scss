@@ -7,8 +7,8 @@ $plum: hsla(349, 70%, 54%, 1);
 $images: "/assets/images";
 $colorCritic: #693790;
 $colorInterview: #007f8a;
-$bgColor: hsla(200, 42%, 25%, 1);
-$errorColor: hsla(349, 86%, 56%, 1);
+$bgColor: hsl(199, 17%, 32%);
+$errorColor: hsl(349, 86%, 56%);
 
 // breakpoints
 $_mobile: 480;
@@ -110,7 +110,7 @@ body {
   font-size: 15px;
   font-weight: 300;
   position: relative;
-  background-image: radial-gradient(hsla(200, 60%, 25%, 1), hsla(200, 50%, 24%, 1), hsla(200, 30%, 16%, 1));
+  background-image: radial-gradient(hsl(199, 17%, 32%), hsla(199, 17%, 25%, 1))
   background-attachment: fixed;
 
   @media ($tablet) {
