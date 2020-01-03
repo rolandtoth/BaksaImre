@@ -36,10 +36,10 @@ export class ItemComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     this.assetLoader.load(
-      '../assets/scripts/baguetteBox/baguetteBox.min.css',
+      '../assets/scripts/baguettebox/baguettebox.min.css',
       () => {
         this.assetLoader.load(
-          '../assets/scripts/baguetteBox/baguetteBox.min.js',
+          '../assets/scripts/baguettebox/baguettebox.min.js',
           () => {
             baguetteBox.run('.lightbox', {
               // animation: 'fadeIn',
