@@ -110,8 +110,7 @@ body {
   font-size: 15px;
   font-weight: 300;
   position: relative;
-  background-image: radial-gradient(hsl(199, 17%, 32%), hsla(199, 17%, 25%, 1));
-  background-attachment: fixed;
+  background: #223740;
 
   @media ($tablet) {
     font-size: 16px;
