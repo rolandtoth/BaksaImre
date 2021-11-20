@@ -562,14 +562,12 @@ h3 {
   
   a {
 	opacity: 0.66;
-	  &:hover {
-		  color: white;
-		  text-decoration: none;
-		  
-		  svg {
-			  opacity: 0.99;
-		  }
-	  }
+	
+	&:hover {
+	  opacity: 0.99;
+	  color: white;
+	  text-decoration: none !important;
+	}
   }
 
   svg {
@@ -589,6 +587,7 @@ h3 {
   &,
   a {
     color: white;
+	opacity: 1 !important;
   }
 
   img {
