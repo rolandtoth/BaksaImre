@@ -560,7 +560,8 @@ h3 {
     @include clearfix;
   }
   
-  a {
+  a,
+  .type-filter {
 	opacity: 0.66;
 	
 	&:hover {
@@ -615,14 +616,6 @@ h3 {
       .title {
         display: inline-block;
         margin-top: 0.2rem;
-      }
-
-      @media($desktop) {
-        &:hover {
-          .title {
-            color: $plum;
-          }
-        }
       }
     }
   }
@@ -720,13 +713,8 @@ h3 {
     padding: 0.75rem 1.5rem;
     cursor: pointer;
 
-    @media($desktop) {
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-
     &.active {
+	  opacity: 1;
       color: $plum;
     }
   }
