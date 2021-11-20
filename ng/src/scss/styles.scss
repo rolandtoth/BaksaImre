@@ -238,6 +238,7 @@ main {
 footer {
   border-top: 1px solid rgba($base, 20%);
   padding-top: 1rem;
+  padding-bottom: 1rem;
   font-size: 0.9rem;
 }
 
@@ -540,11 +541,11 @@ h3 {
   @include clearfix();
   display: block;
   padding: 0.75rem 0;
-  background: white;
+  background: $baseDark;
+  border-bottom: 1px solid rgba(white, 0.16);
   backface-visibility: hidden;
   z-index: 90;
   user-select: none;
-  color: $baseDark;
 
   @media ($max-tablet) {
     padding-bottom: 0.75rem;
@@ -561,7 +562,7 @@ h3 {
 
   svg {
     * {
-      stroke: $baseDark;
+      stroke: white;
     }
   }
 }
@@ -575,7 +576,7 @@ h3 {
 
   &,
   a {
-    color: $baseDark;
+    color: white;
   }
 
   img {
@@ -685,6 +686,13 @@ h3 {
     display: block;
     width: 1.42rem;
     height: auto;
+	opacity: 0.66;
+  }
+  
+  a:hover {
+	  svg {
+		  opacity: 0.99;
+	  }
   }
 }
 
