@@ -175,7 +175,7 @@ svg {
 .year-list,
 .back {
   position: sticky;
-  top: 7.75rem;
+  top: 125px;
   float: left;
   backface-visibility: hidden;
   user-select: none;
@@ -236,7 +236,7 @@ main {
 }
 
 footer {
-  border-top: 1px solid rgba($base, 20%);
+  border-top: 1px solid rgba(white, 0.1);
   padding-top: 1rem;
   padding-bottom: 1rem;
   font-size: 0.9rem;
@@ -542,7 +542,7 @@ h3 {
   display: block;
   padding: 0.75rem 0;
   background: #223740;
-  border-bottom: 1px solid rgba(white, 0.16);
+  border-bottom: 1px solid rgba(white, 0.1);
   backface-visibility: hidden;
   z-index: 90;
   user-select: none;
